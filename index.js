@@ -1,4 +1,5 @@
 
+
 import { Server } from "socket.io";
 import { createServer } from "http";
 
@@ -6,6 +7,7 @@ const httpServer=createServer();
 const io=new Server(httpServer,{ cors:{origin:"*"}});
 
 let onlineusers=[];
+const port=4001
 
 io.on("connection",(socket)=>{
 
@@ -39,4 +41,4 @@ io.on("connection",(socket)=>{
 
 })
 
-httpServer.listen(4001,()=>{console.log(`server started:4001`)})
+httpServer.listen(port,()=>{console.log(`server started:${port}`)})
