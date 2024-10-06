@@ -2,12 +2,13 @@
 
 import { Server } from "socket.io";
 import { createServer } from "http";
-
+import dotevn from "dotenv"
+dotevn.config()
 const httpServer=createServer();
 const io=new Server(httpServer,{ cors:{origin:"*"}});
 
 let onlineusers=[];
-const port=4040
+const port=process.env.port
 
 io.on("connection",(socket)=>{
 
