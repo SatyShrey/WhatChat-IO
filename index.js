@@ -7,7 +7,7 @@ const httpServer=createServer();
 const io=new Server(httpServer,{ cors:{origin:"*"}});
 
 let onlineusers=[];
-const port=0001
+const port=4040
 
 io.on("connection",(socket)=>{
 
