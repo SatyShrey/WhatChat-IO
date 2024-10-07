@@ -1,14 +1,17 @@
+/* eslint-disable no-undef */
 
+const express= require("express")
+const app =express()
+const http=require("http")
+const cors=require("cors")
+const {Server}=require("socket.io")
+const server=http.createServer(app)
 
-import { Server } from "socket.io";
-import { createServer } from "http";
-import dotevn from "dotenv"
-dotevn.config()
-const httpServer=createServer();
-const io=new Server(httpServer,{ cors:{origin:"*"}});
+const io=new Server(server,{ cors:{origin:"*"}});
+app.use(cors())
 
 let onlineusers=[];
-const port=process.env.port
+const port=8080
 
 io.on("connection",(socket)=>{
 
@@ -42,4 +45,4 @@ io.on("connection",(socket)=>{
 
 })
 
-httpServer.listen(port,()=>{console.log(`server started:${port}`)})
+server.listen(port,()=>{console.log(`server started:${port}`)})
